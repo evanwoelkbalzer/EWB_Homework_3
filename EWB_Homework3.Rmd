@@ -1,0 +1,42 @@
+---
+title: "EvanWB_Homework3"
+author: "Evan Woelk Balzer"
+date: "28/01/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r cars}
+summary(cars)
+```
+
+```{r }
+
+```
+#Useful functions#
+resid(my.regression) gets you residuals
+You can then plot them using hist()
+
+Note that fitted values are those drawn from you regression line (which becomes abline)
+
+When you plot residuals against fitted values, you want to see similar variation across the whole plot: homoscedasticity. If the scatterplot is all bunched on one end and expands as you change in X, you see that variation changes as X does: that's bad! (variance in Y changed as value of X changed)
+
+gvla: a function that checks for the relationships in your data
+gvlma(my.regression)
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
