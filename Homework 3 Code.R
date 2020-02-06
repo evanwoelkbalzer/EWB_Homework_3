@@ -75,8 +75,52 @@ leveneTest(Diversity, Status)
 Since p > 0.05, we fail to reject the null hypothsis. The data are homoscedastic.
 
 #10
+#a
+```{r 10a}
 esoph <- read_csv("esoph.csv")
 esoph
+
+ncases <- esoph$ncases
+Alcohol <- esoph$Alcohol
+Tobacco <- esoph$Tobacco
+
+ATanova <- aov(ncases~Alcohol*Tobacco)
+ATanova
+summary(ATanova)
+```
+#b
+The given p-values for the influence of alcohol, tobacco, and the interaction between the two on esophageal cancer are < 0.05. We fail to reject H0; there is no evidence that these factors alone have an impact on the development of esophageal cancer.
+
+#11
+#a
+```{r 11a}
+Age <- esoph$Age
+
+TAanova <- aov(ncases~Age*Tobacco)
+TAanova
+summary(TAanova)
+```
+#b
+TukeyHSD(aov(TAanova))
+
+#c
+The ANOVA results indicate taht p < 0.05 for the effects of age and tobacco consumption individually on the development of esophageal cancer, but no significant interaction term. The Tukey post-hoc test identified significant differences among the most disparate tobacco classes, and numerous significant differences in the effect of age among the 55-64 and 65-74 classes and the other classes. Collectively, these results indicate that middle-aged people with high tobacco consumption are at greater risk than younger individuals with low tobacco consumption. 
+
+#12
+#a
+```{r 12a}
+AAanova <- aov(ncases~Age*Alcohol)
+AAanova
+summary(AAanova)
+```
+
+#b
+```{r 12b}
+interaction.plot(Age, Alcohol, ncases)
+```
+
+#c
+The interaction plot indicates that cases of esophageal cancer are most prevalent in individuals between the ages of 45-74 whose alcohol consumption is moderate. The significance of this interaction is supported by the ANOVA results which indicate a significant interaction between alcohol consumption and age. The frequency of esophageal cancer cannot be explained by either variable alone. Regardless of alcohol consumption, very old and very young individuals have a lower frequency of esophageal cancer than intermediate age classes. 
 
 #13
 
@@ -175,5 +219,3 @@ The correlation coefficient is 0.02730934.
 #d
 p-value: 0.792
 Since p >>> 0.05, we fail to reject the null hypothesis. There is no evidence for a relationship between forearm (wing) length and capture height.
-
-
